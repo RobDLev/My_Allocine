@@ -58,7 +58,8 @@ INNER JOIN movies_actors AS ma ON m.id = ma.mov_id
 INNER JOIN directors_movies AS dm ON ma.mov_id = dm.mov_id 
 INNER JOIN directors AS d ON dm.dir_id = d.id WHERE ma.role = 'Sean Maguire';"
 
-requests["Find all the actors who have not acted in any movie between 1990 and 2000"] = 
+## Joining 3 tables, excluding rows by date
+requests["Find all the actors who have not acted in any movie between 1990 and 2000 (select only actor first name, last name, movie title and release year)"] = 
 "SELECT a.act_fname, a.act_lname, m.mov_title, m.mov_year FROM actors AS a 
 INNER JOIN movies_actors AS ma ON a.id = ma.act_id INNER JOIN movies AS m ON ma.mov_id = m.id 
-WHERE m.mov_year < 1990 OR m.mov_year > 2000 ORDER BY m.mov_year;"
+WHERE m.mov_year < 1990 OR m.mov_year > 2000;"
